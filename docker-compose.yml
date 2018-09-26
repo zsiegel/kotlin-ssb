@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  ssb-client1:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssb
+  ssb-client2:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssb
