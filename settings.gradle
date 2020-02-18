@@ -1,0 +1,2 @@
+rootProject.name = 'kotlin-ssb'
+include 'lib'

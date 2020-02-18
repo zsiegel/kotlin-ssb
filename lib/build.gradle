@@ -1,0 +1,9 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "com.goterl.lazycode:lazysodium-java:$lazysodium_version"
+    implementation "net.java.dev.jna:jna:$jna_version"
+    implementation "org.slf4j:slf4j-api:$slf4j_version"
+    implementation "ch.qos.logback:logback-classic:$logback_classic_version"
+}
