@@ -1,8 +1,11 @@
 //Used for testing
 fun main(args: Array<String>) {
 
-    val lanDiscovery = PeerDiscoveryThread()
-    lanDiscovery.start()
-    lanDiscovery.join()
+    val clientThread = PeerDiscoveryThread()
+    val serverThread = ServerThread()
 
+    serverThread.start()
+    clientThread.start()
+    clientThread.join()
+    serverThread.join()
 }

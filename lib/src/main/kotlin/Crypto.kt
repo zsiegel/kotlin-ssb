@@ -79,7 +79,7 @@ class ClientKeyExchange(private val peer: DiscoveredPeer,
                         private val appKey: ByteArray,
                         identity: KeyPair = lazySodium.cryptoSignKeypair()) {
 
-    private val logger = LoggerFactory.getLogger("KeyExchange")
+    private val logger = LoggerFactory.getLogger("ClientKeyExchange")
 
     private val identityKeyPair: KeyPair = identity
     private val ephemeralKeyPair: KeyPair = lazySodium.cryptoBoxKeypair()
@@ -183,6 +183,22 @@ class ClientKeyExchange(private val peer: DiscoveredPeer,
         get() {
             return ephemeralKeyPair.secretKey.asBytes
         }
+}
+
+class ServerKeyExchange(private val appKey: ByteArray) {
+
+    fun readHello(hello: ByteArray): Boolean {
+        if (hello.size != 64) {
+            return false
+        }
+
+        val clientHmac = hello.slice(0 until 32).toByteArray()
+        val clientEphemeralPublicKey = hello.slice(32 until 64).toByteArray()
+
+        return lazySodium.cryptoAuthVerify(clientHmac,
+                                           clientEphemeralPublicKey, clientEphemeralPublicKey.size.toLong(),
+                                           appKey)
+    }
 }
 
 /**
