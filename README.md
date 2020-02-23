@@ -6,6 +6,7 @@ A kotlin library for the [secure scuttlebutt protocol](https://ssbc.github.io/sc
 I will try and livestream most of the work. Links to the videos are below.
 
 - [Peer Discovery](https://www.youtube.com/watch?v=aBwNUX6BmNo)
+- [Server Verify Hello](https://www.youtube.com/watch?v=aze6TeuX9WM)
 
 ### Testing
 Currently testing against the [ssb-server](https://github.com/ssbc/ssb-server). Run it in an IDE for debugging 
@@ -28,5 +29,6 @@ Currently testing the client handshake.
     - [x] Client Auth
     - [ ] Server Accept
 - [ ] Server Handshake
+    - [x] Verify Hello
 - [ ] Local Discovery Service
 - [ ] More, More, More
